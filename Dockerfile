@@ -5,6 +5,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# /app/build 폴더를 미리 생성 (선택적)
+RUN mkdir -p /app/build
+
 # 애플리케이션 소스 코드를 복사하고 빌드합니다.
 COPY . .
 RUN npm run build
