@@ -33,7 +33,7 @@ jobs:
 
 
       - name: Build the Docker image
-        run: docker build -t zk2840174/d2_image:latest .
+        run: docker build -t zk2840174/r1_image:latest .
 
       - name: Push the Docker image to Docker Hub
-        run: docker push zk2840174/d2_image:latest
+        run: docker push zk2840174/r1_image:latest
