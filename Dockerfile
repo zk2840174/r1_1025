@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install
 
 # /app/build 폴더를 미리 생성 (선택적)
-RUN mkdir -p /app/build
+RUN mkdir -p /app/dist
 
 # 애플리케이션 소스 코드를 복사하고 빌드합니다.
 COPY . .
@@ -20,7 +20,7 @@ FROM nginx:alpine
 # COPY nginx.conf /etc/nginx/nginx.conf
 
 # 빌드 단계에서 생성된 정적 파일을 Nginx의 기본 루트 디렉토리로 복사합니다.
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Nginx가 80번 포트에서 실행되도록 설정합니다.
 EXPOSE 80
