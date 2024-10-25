@@ -17,12 +17,19 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version:
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+          node-version: '20' # 원하는 Node.js 버전을 선택하세요
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
